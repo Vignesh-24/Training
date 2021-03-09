@@ -1,0 +1,10 @@
+<!ELEMENT items (item+)>
+<!ELEMENT item (id,name,unit,price,qty,amount)>
+<!ELEMENT id (#PCDATA)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT unit (#PCDATA)>
+<!ELEMENT price (#PCDATA)>
+<!ELEMENT qty (#PCDATA)>
+<!ELEMENT amount (#PCDATA)>
+
+
