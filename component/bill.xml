@@ -1,0 +1,40 @@
+<invoice>
+	<custname>Vignesh K G</custname>
+	<billno>101</billno>
+	<billdate>10-3-2021</billdate>
+	<items>
+	<item>
+		<id>1</id>
+		<name>Daal</name>
+		<unit>1</unit>
+		<price>40</price>
+		<qty>3</qty>
+		<amount>120</amount>
+	</item>
+	<item>
+		<id>2</id>
+		<name>Rice</name>
+		<unit>1</unit>
+		<price>50</price>
+		<qty>10</qty>
+		<amount>500</amount>
+	</item>
+	<item>
+		<id>3</id>
+		<name>Sugar</name>
+		<unit>1</unit>
+		<price>50</price>
+		<qty>5</qty>
+		<amount>250</amount>
+	</item>
+	<item>
+		<id>4</id>
+		<name>Maggi</name>
+		<unit>1</unit>
+		<price>10</price>
+		<qty>5</qty>
+		<amount>50</amount>
+	</item>
+	</items>
+</invoice>
+
