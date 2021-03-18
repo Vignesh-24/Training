@@ -49,9 +49,20 @@ public class InvoiceMasterDAOImpl implements InvoiceMasterDAO {
 
 	@Override
 	public int updateInvoice(InvoiceMasterDTO invMasterDTO) {
-		if(this.deleteInvoice(invMasterDTO.getInvno())==1 && this.insertInvoice(invMasterDTO)==1)
-			return 1;
-		return 0;
+		try {
+			stmt=con.prepareStatement("Update invoicemaster	set invdate=?,customerno=? where invno=?");
+			stmt.setDate(1, invMasterDTO.getInvdate());
+			stmt.setInt(2, invMasterDTO.getCustomerno());
+			stmt.setInt(3, invMasterDTO.getInvno());
+			stmt.execute();
+			con.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return 0;
+		}
+		
+		
+		return 1;
 	}
 
 	@Override
