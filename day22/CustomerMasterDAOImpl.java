@@ -59,9 +59,23 @@ public class CustomerMasterDAOImpl implements CustomerMasterDAO{
 
 	@Override
 	public int updateCustomer(CustomerMasterDTO cust) {
-		if(this.deleteCustomer(cust.getCustomerno())==1 && this.insertCustomer(cust)==1) {
-			return 1;}
-		return 0;
+		try {
+			
+			stmt=con.prepareStatement("update customer set customername=?,customeremail=?,customerphone=?,customeraddress=? where customerno=?");
+			stmt.setString(1, cust.getCustomername());
+			stmt.setString(2, cust.getCustomeremail());
+			stmt.setLong(3, cust.getCustomerphone());
+			stmt.setString(4, cust.getCustomeraddress());
+			stmt.setInt(5, cust.getCustomerno());
+			stmt.execute();
+			con.commit();
+		}catch(Exception e) {
+			e.printStackTrace();
+			return 0;
+		}
+		
+		
+		return 1;
 	}
 
 	@Override
