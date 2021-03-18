@@ -78,9 +78,19 @@ public class ItemTransactionDAOImpl implements ItemTransactionDAO{
 
 	@Override
 	public int updateTransaction(ItemTransactionDTO itm) {
-		if(this.deleteTransaction(itm.getInvno(), itm.getItemno())==1 && this.insertNewTransaction(itm)==1)
-			return 1;
-		return 0;
+		try {
+			stmt=con.prepareStatement("update itemtransaction set itemno=?,itemunit=? where invno=?");
+			stmt.setInt(3, itm.getInvno());
+			stmt.setInt(1, itm.getItemno());
+			stmt.setInt(2, itm.getItemunit());
+			stmt.execute();
+			con.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return 0;
+		}
+		
+		return 1;
 	}
 
 	@Override
