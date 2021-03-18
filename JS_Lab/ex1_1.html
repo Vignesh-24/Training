@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rectangle to Polar</title>
+</head>
+<body>
+    <script>
+        var x=Number(prompt("Enter Length"));
+        var y=Number(prompt("Enter Breadth"));
+        var radius=Math.sqrt((x*x)+(y*y));
+        var teeta=Math.atan(y/x);
+        document.write("The Polar Co-ordinates are (r,0) is ("+radius+","+teeta+")");
+    </script>
+</body>
+</html>

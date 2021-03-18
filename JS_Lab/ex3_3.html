@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>State / Territory</title>
+</head>
+<body>
+
+
+    US SSN: <input type="number" id="code" value="">
+    <p id="ans"></p>
+    <button onclick="getState();">Search</button>
+
+
+    <script>
+        var map=new Map();
+        map.set(001,"California");
+        map.set(101,"Florida");
+        map.set(201,"Texas");
+        map.set(200,"Alaska");
+        map.set(150,"Washington");
+
+
+        function getState(){
+            var c=Number(document.getElementById("code").value);
+            document.getElementById("ans").innerHTML=map.get(c);
+        }
+
+    </script>
+</body>
+</html>

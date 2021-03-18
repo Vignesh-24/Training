@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank</title>
+</head>
+<body>
+    <script>
+
+        class Bank{
+
+            constructor(name,number,type,balance){
+                this.name=name;
+                this.number=number;
+                this.type=type;
+                this.balance=balance;
+            }
+
+           deposit(amount){
+            this.balance+=amount;
+            console.log("Deposited")
+            }
+
+            withdraw(amount){
+                if(this.balance>=amount){
+                    this.balance-=amount;
+                    console.log("withdrawal Complete");
+                }
+                else{
+                    console.log("Insufficient Balance");
+                }
+            }
+
+            display(){
+                console.log("Name: "+this.name+" "+"Balance: "+this.balance);
+            }
+
+
+        }
+
+
+        var acc=new Bank("Vignesh K G",1234567890,"savings",4000);
+        acc.display();
+        acc.deposit(1500);
+        acc.display();
+        acc.withdraw(3000);
+        acc.withdraw(4000);
+        acc.display();
+
+    </script>
+</body>
+</html>

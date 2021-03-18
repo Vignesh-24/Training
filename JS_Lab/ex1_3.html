@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Series</title>
+</head>
+<body>
+
+    <script>
+        var n=Number(prompt("Enter value of n:"));
+        var incr=3;
+        var res=1;
+        var itr=3;
+        for(i=2;i<=n;i++){
+            if(i%2==0)
+                res-=(1/incr)
+            else
+                res+=(1/incr)
+            incr=incr+itr;
+            itr++;
+        }
+        document.write("The sum of Series: "+res);
+    </script>
+    
+</body>
+</html>

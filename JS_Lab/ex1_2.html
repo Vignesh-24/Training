@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asset</title>
+</head>
+<body>
+
+    Asset: <input type="text" id="asset"><br>
+    Original Amt: <input type="number" id="amt"><br>
+    Years: <input type="number" id="yr"><br>
+    <button type="button" onclick="get();">Get Details</button>
+
+
+    <section id="output"></section>
+    <script>
+        function get(){
+            var asset=document.getElementById("asset").value;
+            var amt=Number(document.getElementById("amt").value);
+            var yr=Number(document.getElementById("yr").value);
+            var output="<p>Asset: "+asset+"    Original Value: "+amt+"<br>";
+            output+="<table><tr><th>Year</th><th>Accumulated</th><th>Depreciation</th><th>"+asset+" Value</th><tr>";
+            var n=(yr*(yr+1))/2;
+            var dep=0;
+            for(i=0;i<yr;i++){
+                output+="<tr>";
+                var temp=(yr-i)/n;
+                var dep1=((amt)*temp);
+                dep+=dep1;
+                output+="<td>"+(yr+1)+"</td>";
+                output+="<td>"+dep1.toFixed(2)+"</td>";
+                output+="<td>"+dep.toFixed(2)+"</td>";
+                output+="<td>"+(amt-dep).toFixed(2)+"</td></tr>";
+            }
+
+            output+="</table>"
+            document.getElementById("output").innerHTML=output;
+
+        }
+    </script>
+</body>
+</html>

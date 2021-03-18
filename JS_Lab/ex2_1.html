@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Country Capital</title>
+</head>
+<body>
+
+
+    Country Name: <input type="text" id="cty" value="">
+    <p id="ans"></p>
+    <button onclick="getCapital();">Get Capital</button>
+
+
+    <script>
+        var map=new Map();
+        map.set("India","Delhi");
+        map.set("UK","London");
+        map.set("UAE","Dubai");
+        map.set("SA","CapeTown");
+        map.set("Australia","Canberra");
+
+
+        function getCapital(){
+            var c=document.getElementById("cty").value;
+            document.getElementById("ans").innerHTML=map.get(c);
+        }
+
+    </script>
+</body>
+</html>
