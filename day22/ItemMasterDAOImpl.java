@@ -56,9 +56,21 @@ public class ItemMasterDAOImpl implements ItemMasterDAO {
 
 	@Override
 	public int updateItem(ItemMasterDTO item) {
-		if(this.deleteItem(item.getItemno())==1 && this.insertItem(item)==1) {
-			return 1;}
-		return 0;
+		try {
+			stmt=con.prepareStatement("update itemmaster set itemdesc=?,itemprice=?,itemqty=? where itemno=?");		
+			stmt.setString(1, item.getItemdesc());
+			stmt.setFloat(2, item.getItemprice());
+			stmt.setInt(3, item.getItemqty());
+			stmt.setInt(4, item.getItemno());
+			stmt.execute();
+			con.commit();
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+			return 0;
+		}
+		
+		return 1;
 	}
 
 	
