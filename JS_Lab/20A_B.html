@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>onchange</title>
+</head>
+<body>
+    <FORM NAME="st">
+        <INPUT TYPE ="TEXT" SIZE="65" NAME="input1"><BR> 
+        <INPUT TYPE ="BUTTON"  VALUE="Change" 
+                     onClick="window.alert(document.st.input1.value);">
+        <INPUT TYPE="text" 
+        onChange=" if (parseInt(this.value) <= 5) {
+               alert('Please enter a number greater than 5.');
+           } ">
+
+    </FORM>
+
+</body>
+</html>

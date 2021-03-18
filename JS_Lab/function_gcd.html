@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GCD</title>
+</head>
+<body>
+    <script>
+        function gcd(m,n)
+        {
+            return  n > 0 ? gcd(n,m%n):m;
+        }
+        var x=Number(prompt("Enter 1st Number"));
+        var y=Number(prompt("Enter 2nd Number"));
+        document.write("GCD of "+x+" and "+y+ " is " +(x,y));
+    </script>
+</body>
+</html>
