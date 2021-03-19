@@ -5,6 +5,7 @@ import java.rmi.server.UnicastRemoteObject;
 import java.sql.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
 import java.util.Set;
 
 import rmiserver.backend.CustomerMasterDAOImpl;
@@ -15,6 +16,7 @@ import rmiserver.backend.ItemMasterDAOImpl;
 import rmiserver.backend.ItemMasterDTO;
 import rmiserver.backend.ItemTransactionDAOImpl;
 import rmiserver.backend.ItemTransactionDTO;
+import rmiserver.utility.consignment.ConsignmentUtility;
 import rmiserver.utility.xml.InvoiceWrapper;
 import rmiserver.utility.xml.XmlCreator;
 
@@ -89,8 +91,15 @@ public class InvoiceServer extends UnicastRemoteObject implements Invoice{
 		
 	}
 	
-	public void calculateDate() throws RemoteException{
-		System.out.println("delivery date is so and so....");
+	public String calculateDate(int invno) throws RemoteException{
+		
+		InvoiceMasterDTO invoiceMasterDTO=invoice.getInvoiceMaster(invno);
+		CustomerMasterDTO cus=customers.getCustomer(invoiceMasterDTO.getCustomerno());
+		Properties properties=DBUtiility.getProperty();
+		int distance=Integer.parseInt(properties.getProperty(cus.getCustomeraddress().toLowerCase()));
+		int speed=Integer.parseInt(properties.getProperty("speed"));
+		return new ConsignmentUtility().getDeliveryInfo(distance, speed, invoiceMasterDTO.getInvdate());
+		
 	}
 	
 	public void closeApp() {

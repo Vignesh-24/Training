@@ -31,7 +31,9 @@ public class InvoiceClient {
 				break;
 			}
 			case 2:{
-				inv.calculateDate();
+				System.out.println("enter invoice no:");
+				int invno=scan.nextInt();
+				System.out.println("Delivery Info: "+inv.calculateDate(invno));
 				break;
 			}
 			case 3:{

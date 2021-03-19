@@ -53,5 +53,12 @@ public class DBUtiility {
 			exp.printStackTrace();
 		}
 	}
+	
+	public static Properties getProperty() {
+		return prop;
+		
+	}
+	
+	
 
 }
