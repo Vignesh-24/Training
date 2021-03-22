@@ -1,0 +1,36 @@
+<html>
+	<body>
+		<script>
+				var ajaxObj=new XMLHttpRequest();
+				function makeAjaxCall(url){
+					var target=document.getElementById("targetDiv");
+					ajaxObj.open("GET",url);
+						ajaxObj.onreadystatechange=function(){
+							if(ajaxObj.readyState==4 && ajaxObj.status==200){
+								var response=ajaxObj.responseXML;
+								target.innerHTML=response.documentElement.nodeName;
+								var root=response.documentElement;
+								for(var i=0;i<root.childNodes.length;i++)
+								{
+									for(var j=0;j<root.childNodes.item(i).childNodes.length;j++)
+									{
+										alert(root.childNodes.item(i).childNodes.item(j).firstChild.nodeValue);			
+									}
+								}
+								
+							}
+						}
+					ajaxObj.send(null);//where u make the actual request...
+				}
+		
+		</script>
+	
+	<form>
+		<input type="button" onClick="makeAjaxCall('http://localhost:80/EY_Exercise/books.xml')" value="MakeAjaxCall"></input>
+	</form>
+	
+	<div id="targetDiv">
+		This is the place where the data procured from the server will get displayed....
+	</div>
+	</body>
+</html>

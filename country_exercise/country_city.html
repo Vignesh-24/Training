@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Load City</title>
+</head>
+<body>
+    <form>
+        <select size="1" id="countryList" onchange="setCity('city.xml')">
+        	<option value="india">India</option>
+        	<option value="iraq">IRAQ</option>
+        </select>
+         <select size="1" id="target">
+        	<option value="india">cities</option>
+        	
+        </select>
+    </form>
+
+    <script>
+
+        var ajaxObj=new XMLHttpRequest();
+        function push(countrylist)
+        {
+            var target=document.getElementById("target");
+            for(j=0;j<countrylist.childNodes.length;j++){
+                target.options[j]=new Option(countrylist.childNodes[j].firstChild.nodeValue);
+            }
+        }
+
+
+        function setCity(file){
+
+            ajaxObj.open("GET","http://localhost:80/EY_Exercise/"+file);
+
+            ajaxObj.onreadystatechange=function(){
+
+                if(ajaxObj.readyState==4 && ajaxObj.status==200){
+                    var country=document.getElementById("countryList").value;
+                    var response=ajaxObj.responseXML;
+                    var x=response.getElementsByTagName('country');
+                    for(var i=0;i<x.length;i++){
+                        if(x[i].getAttribute('name')==country){
+                            push(x[i]);
+                            break;
+                        }
+                    }
+                }
+            }
+
+            ajaxObj.send();
+        }
+
+    </script>
+</body>
+</html>
