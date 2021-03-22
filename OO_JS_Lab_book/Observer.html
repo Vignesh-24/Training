@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Observer</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js"></script>
+
+</head>
+<body>
+    <script>
+
+        $(document).ready(function(){
+            $("#div1").click(function(){ 
+                console.log(this.innerHTML);
+                new Observer().acceptDiv(this);new action();
+                      
+            });    
+        }); 
+
+
+        function Observable(){ 
+            var myobs=[]; 
+            var i=0; 
+            this.addObserver=function(obs){             
+                myobs[i]=obs;          
+                ++i;
+            }
+            this.notifyObserver=function(){ 
+                for(var k in myobs){               
+                    myobs[k].update();          
+                }  
+            }
+        }
+
+
+        function Observer(){
+            var dd;
+            this.acceptDiv=function(d) { 
+                this.dd=d;     
+                console.log('div accepted.....registered...'+this.dd);       
+            } 
+            this.update=function(){          
+                console.log(this.dd); 
+                this.dd.fadeOut(2000); 
+                this.dd.fadeIn();       
+            }       
+        }
+
+        function action(){ 
+            var firealarm=new Observable(); 
+            var students=new Observer();
+            students.acceptDiv(document.getElementById("div1"));
+            firealarm.addObserver(students);       
+            firealarm.notifyObserver();    
+        }
+
+     
+
+
+
+    </script>
+
+    <p id="p1">Enter this paragraph.</p>
+    <div id="div1" style="width:180px;height:180px;background-color:yellow;">hi</div>
+    <br>
+    
+</body>
+</html>

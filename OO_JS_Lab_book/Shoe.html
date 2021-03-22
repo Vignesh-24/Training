@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shoe Factory</title>
+</head>
+<body>
+    <script>
+
+        function Shoe(){
+            this.name="shoe";
+        }
+
+        function ShoeFactory(){
+            this.makeShoe=function(){
+                return new Shoe();
+            }
+        }
+
+        function AdidasFactory(){
+            this.brand="Adidas";
+        }
+
+        AdidasFactory.prototype=new ShoeFactory();
+
+        function ShoeShop(){
+            var shoefacty;
+            this.setShoeFactory=function(shoefact){
+                this.shoefacty=shoefact;
+            }
+
+            this.getShoeFactory=function(){
+                return this.shoefacty;
+            }
+        }
+
+
+        function XShoeShop(){
+
+            this.sellShoe=function(){
+                return this.shoefacty.makeShoe();
+            }
+
+        }
+        XShoeShop.prototype=new ShoeShop();
+        
+        var xshop=new XShoeShop();
+        xshop.setShoeFactory(new AdidasFactory());
+        document.write(xshop.sellShoe().name);
+        document.write(xshop.getShoeFactory().brand);
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo on JS Object</title>
+</head>
+<body>
+    
+    <h1>See Console for Output</h1>
+    <script>
+
+        //object
+        var person=new Object();
+        person.name="Vicky";
+        person.getName=function(){return this.name;};
+        console.log(person.getName());
+
+
+        //literal usage
+        var person2={
+            name:"Sai",
+            getName:function(){
+                return this.name;
+            }
+        }
+        console.log("Literal: "+person2.getName());
+
+
+        //factory function using constructor
+        var person3=function(name,age){ 
+            var personObj=new Object();             
+            personObj.name=name;personObj.age=age;             
+            personObj.getName=function(){return this.name+" and the age is..:"+this.age;}; 
+            return personObj;             
+        }
+        var p3=person3("Vijay",45);
+        console.log("Factory Function: "+p3.getName());
+
+
+
+        //Without new keyword, using this
+        var person4=function(name,age){
+            this.name=name;
+            this.age=age;
+            this.getName=function(){
+                return this.name+" , "+this.age;
+            }
+            return this;
+        }
+        var pobj=new person4("Dhoni",39);
+        console.log("Using this: "+pobj.getName());
+
+
+
+        //function constructor
+        function Person5(name){ 
+            this.name=name; 
+            this.getName=function(){ 
+                return this.name;                
+            } 
+            this.display=display;          
+        } 
+        function display(){ 
+            return this.name;          
+        } 
+        var p5=new Person5("ramu");         
+        console.log(p5.getName());         
+        console.log(p5.display());
+        
+        
+        var p5copy=new p5.constructor("ramudeepcopy");   
+        console.log(p5copy.display()); 
+
+
+        //inheritance demo
+        function Parent(){
+            this.getName=function(){return this.name;}
+        }
+
+        function Child(name){
+            this.name=name;
+        }
+
+        Child.prototype=new Parent();
+        Child.prototype.constructor=Child;
+        console.log(Child.prototype.constructor);
+
+        var c=new Child("child ramu");          
+        console.log("child name...:" + c.getName());
+
+        var dpchild=new c.constructor("dopy copy ramu");          
+        console.log(dpchild.getName());
+
+    </script>
+</body>
+</html>

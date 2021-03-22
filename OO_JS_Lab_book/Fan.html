@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fan Speed Switch</title>
+</head>
+<body>
+    <h1>See Console for Output</h1>
+    <script>
+        
+        function Fan(){
+                this.setState=function(state){
+                    this.state=state;
+                }
+                this.pull=function(){
+                    this.state.execute(this);
+                }
+        }
+
+
+        function SwitchOffState(){
+            this.execute=function(fan){
+                fan.setState(new SwitchOnState());
+                console.log("Switch on state.....");
+            }
+        }
+
+        function SwitchOnState(){
+            this.execute=function(fan){
+                fan.setState(new LowSpeedState());
+                console.log("Low speed state.....");
+            }
+        }
+
+        function LowSpeedState(){
+            this.execute=function(fan){
+                fan.setState(new MediumState());
+                console.log("Medium Speed state.....");
+            }
+        }
+
+        function MediumState(){
+            this.execute=function(fan){
+                fan.setState(new HighSpeedState());
+                console.log("High Speed state.....");
+            }
+        }
+
+        function HighSpeedState(){
+            this.execute=function(fan){
+                fan.setState(new SwitchOffState());
+                console.log("Switch OFF state.....");
+            }
+        }
+
+
+        var orient=new Fan();
+        orient.setState(new SwitchOffState());
+
+        for(var i=0;i<10;i++){
+            confirm("Pull Chain ? ");
+            orient.pull();
+            
+        }
+       
+
+
+    </script>
+</body>
+</html>
