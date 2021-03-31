@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
+    <title>Invoice</title>
+</head>
+<style>
+    body{
+        font-family: 'Josefin Sans', 'sans-serif';
+    }
+</style>
+<body>
+
+    <nav class="large-device navbar navbar-dark unique-color-dark justify-content-between pb-3">
+        <span class="navbar-brand" href="#"> Welcome to Shop APP</span>
+        
+    </nav>
+    
+
+    <div class="container py-5">
+        <form action="lang.do" method="post">
+        <div class="card">
+            <div class="card-body">
+              <h1 class="h1 pb-2">Language Selection</h1>
+              <p class="h4 pb-2">
+                Choose the Language you want from the list..
+              </p>
+              <select name="lang" class="form-control bg-dark text-white">
+                <option value="ta">Tamil</option>
+                <option value="te">Telugu</option>
+                <option value="hi">Hindi</option>
+            </select>
+            <input type="hidden" name="formid" value="lang">
+            <div class="py-3">
+                <button type="submit" class="btn btn-primary">Next</button>
+            </div>
+           
+            </div>
+          </div>
+        </form>
+    </div>
+
+    
+    
+</body>
+</html>
