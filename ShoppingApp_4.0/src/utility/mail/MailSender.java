@@ -27,7 +27,7 @@ public class MailSender implements XMLtoEmail {
 		final String host = "smtp.gmail.com";
     	final int port = 587;
     	final String username = "kgvicky24@gmail.com";
-    	final String password = "lufi2412";
+    	final String password = "urpass";
         
         
         Properties prop = new Properties();
