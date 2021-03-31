@@ -19,7 +19,7 @@
 <body>
 
     <nav class="large-device navbar navbar-dark unique-color-dark justify-content-between pb-3">
-        <span class="navbar-brand" href="#"> Welcome to Shop APP Mr.<%=session.getAttribute("uname") %></span>
+        <span class="navbar-brand" href="#"> Welcome to Shop APP Mr. ${uname}</span>
         <form class="form-inline my-1" action="logout.do" method="post">
             <input type="hidden" name="formid" value="logout" >
             <button type="submit" class="btn btn-md btn-red btn-sm my-0" >Logout</button>>
