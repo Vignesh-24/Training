@@ -49,6 +49,7 @@ public class XmlCreator {
 			writer.write(builder.toString());
 			writer.close();
 		}catch (Exception e) {
+			System.out.println("error");
 			e.printStackTrace();
 		}
 	
