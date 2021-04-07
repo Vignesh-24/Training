@@ -1,0 +1,86 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:context="http://www.springframework.org/schema/context"
+xmlns:tx="http://www.springframework.org/schema/tx"
+xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context-3.0.xsd
+http://www.springframework.org/schema/tx
+http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+
+<import resource="config2.xml"/>
+<bean id="factory" class="springdemo.BataShoeFactory">
+	<property name="key">
+		<value>secret key...set by factory...</value>
+	</property>
+</bean>
+<bean id="fac" class="springdemo.LakhaniShoeFactory"/>
+
+
+<bean id="wadvice" class="springdemo.WelcomeAdvice"/>
+<bean id="eadvice" class="springdemo.ExceptionHandler"/>
+<bean id="aroundAdvice" class="springdemo.ValidationAdvice"/>
+<bean id="aadvice" class="springdemo.ThankYouAdvice"/>
+
+<bean id="shop" class="springdemo.GokulShoeShop" lazy-init="false" init-method="setup" destroy-method="teardown" autowire="byName" >
+
+	<!-- <constructor-arg index="0">
+		<value>Helooooo</value>
+	</constructor-arg>
+	<constructor-arg index="1">
+		<list>
+			<value>Vicky</value>
+			<value>Sai</value>
+		</list>
+	</constructor-arg> -->
+	
+	<property name="shopname">
+		<value>HelloShop</value>
+	</property>
+	<property name="helper">
+		<list>
+			<value>Vicky</value>
+			<value>Sai</value>
+		</list>
+	</property>
+	<property name="mapp">
+		<map>
+			<entry key="one">
+				<value>1</value>
+			</entry>
+			<entry key="two">
+				<value>2</value>
+			</entry>
+		</map>
+	</property>
+	<property name="factory">
+		<ref bean="fac"/>
+	</property>  
+	
+</bean>
+<bean id="advisedShop" class="org.springframework.aop.framework.ProxyFactoryBean">
+	<property name="target">
+		<ref bean="shop"/>
+	</property>
+	<property name="interceptorNames">
+		<list>
+			<value>pointcutadvice1</value>	
+			<value>pointcutadvice2</value>	
+			<value>pointcutadvice3</value>
+			<value>pointcutadvice4</value>
+			<value>exportAdvice</value>
+		</list>
+	</property>
+	<property name="proxyInterfaces">
+		<list>
+			<value>springdemo.ShoeSeller</value>
+			<value>springdemo.Export</value>
+		</list>
+	</property>
+</bean>
+</beans>
+
+
+
+
