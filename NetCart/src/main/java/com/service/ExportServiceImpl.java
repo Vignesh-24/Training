@@ -232,8 +232,8 @@ public class ExportServiceImpl implements ExportService {
 
 	@Override
 	public void sendSMS(InvoiceWrapper invoicewrapper) {
-		final String ACCOUNT_SID = "AC1f50b87bb7c56d21d8df8afcecee9877";
-		final String AUTH_TOKEN = "1f2bf5a1398617cf1de6be15a92a0499";
+		final String ACCOUNT_SID = "";
+		final String AUTH_TOKEN = "";
 		Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
 		String to="";
 		String message="";
